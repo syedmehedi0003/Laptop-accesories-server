@@ -108,17 +108,11 @@ async function run() {
         //Get order
         app.get('/order', async (req, res) => {
             const email = req.query.email;
-            // const decodedEmail = req.decoded.email;
-            // console.log(decodedEmail);
-            // if (email === decodedEmail) {
+
             const query = { email: email };
             const user1 = await orderCollection.find(query).toArray();
             return res.send(user1);
-            // }
 
-            // else {
-            //     return res.status(403).send({ message: 'Forbidden Access' });
-            // }
         });
 
         //Get all Order
@@ -132,14 +126,8 @@ async function run() {
 
         //Get review
         app.get('/review', async (req, res) => {
-            // const email = req.query.email;
-            // const query = { email: email };
-            // const user = await reviewCollection.find(query).toArray();
-            // res.send(user);
-
             const users = await reviewCollection.find().toArray();
             res.send(users);
-
         });
 
         app.put('/user/review', async (req, res) => {
@@ -154,22 +142,6 @@ async function run() {
             res.send(result);
         });
 
-
-        //Get order
-        // app.get('/order', async (req, res) => {
-        //     const query = {};
-        //     const cursor = orderCollection.find(query);
-        //     const order = await cursor.toArray();
-        //     res.send(order);
-        // });
-
-
-        //Post User
-        // app.post('/user', async (req, res) => {
-        //     const newProduct = req.body;
-        //     const result = await userCollection.insertOne(newProduct);
-        //     res.send(result);
-        // });
 
         app.put('/user/profile', async (req, res) => {
             const data = req.body;
@@ -188,20 +160,8 @@ async function run() {
 
 
         //get User
-        // app.get('/user/:id', async (req, res) => {
-        //     const id = req.params.id;
-        //     const query = { _id: ObjectId(id) };
-        //     const result = await userCollection.findOne(query);
-        //     res.send(result);
-        // })
-
-        //get User
         app.get('/user', async (req, res) => {
 
-            // const email = req.query.email;
-            // const query = { email: email };
-            // const users = await userCollection.find(query).toArray();
-            // res.send(users);
 
             const users = await userCollection.find().toArray();
             res.send(users);
@@ -215,7 +175,6 @@ async function run() {
             res.send({ admin: isAdmin });
         })
 
-        // const options = { upsert: true };
         app.put('/user/admin/:email', verifyJWT, async (req, res) => {
             const email = req.params.email;
 
