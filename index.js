@@ -81,20 +81,7 @@ async function run() {
         //     res.send(result);
         // });
 
-        //API to delete order USER
-        // app.delete("/order/:id", async (req, res) => {
-        // const decodedEmail = req.decoded.email;
-        // const id = req.params.id;
-        // const email = req.headers.email;
-        // if (decodedEmail) {
 
-        // const result = await orderCollection.deleteOne({ _id: ObjectId(id) });
-        // res.send(result);
-        // } 
-        // else {
-        //     res.send("Unauthorized access");
-        // }
-        // });
 
 
         //Update
