@@ -73,6 +73,29 @@ async function run() {
             res.send(result);
         });
 
+        //delete
+        // app.delete('/order/:id', async (req, res) => {
+        //     id = req.params.id;
+        //     const query = { _id: ObjectId(id) };
+        //     const result = await orderCollection.deleteOne(query);
+        //     res.send(result);
+        // });
+
+        //API to delete order USER
+        // app.delete("/order/:id", async (req, res) => {
+        // const decodedEmail = req.decoded.email;
+        // const id = req.params.id;
+        // const email = req.headers.email;
+        // if (decodedEmail) {
+
+        // const result = await orderCollection.deleteOne({ _id: ObjectId(id) });
+        // res.send(result);
+        // } 
+        // else {
+        //     res.send("Unauthorized access");
+        // }
+        // });
+
 
         //Update
         app.patch('/product/:id', async (req, res) => {
@@ -125,7 +148,7 @@ async function run() {
 
 
         //Get review
-        app.get('/review', async (req, res) => {
+        app.get('/user/review', async (req, res) => {
             const users = await reviewCollection.find().toArray();
             res.send(users);
         });
@@ -161,7 +184,6 @@ async function run() {
 
         //get User
         app.get('/user', async (req, res) => {
-
 
             const users = await userCollection.find().toArray();
             res.send(users);
